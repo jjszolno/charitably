@@ -3,6 +3,9 @@
 
     <string name="generic_error">There was an unexpected error</string>
     <string name="view_contact_info">Contact Info</string>
+    <string name="open_whatsapp">
+        https://wa.me/%1$s?text=I\'m interested in your%2$s
+    </string>
 
     <string name="new_donation_title">Create your Donation</string>
     <string name="new_donation_title_hint">Title</string>

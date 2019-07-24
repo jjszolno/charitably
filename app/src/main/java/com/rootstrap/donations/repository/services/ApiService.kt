@@ -10,8 +10,8 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("donations")
-    fun getDonations(): Call<ArrayList<Donation>>
+    @GET("donations?_expand=user")
+    fun getDonations() : Call<ArrayList<Donation>>
 
     @GET("donations/{id}")
     fun getDonation(@Path("id") id: Int): Call<Donation>
