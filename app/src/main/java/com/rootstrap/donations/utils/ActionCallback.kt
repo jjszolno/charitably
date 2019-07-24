@@ -1,8 +1,7 @@
 package com.rootstrap.ava.util
 
 import com.google.gson.Gson
-import com.rootstrap.ava.bus
-import com.rootstrap.ava.models.ErrorModel
+import com.rootstrap.donations.App.Companion.bus
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,16 +25,27 @@ abstract class ActionCallback<T> : Callback<T> {
     open fun errorAction(response: Response<T>) {
         try {
             val error = Gson().fromJson(response.errorBody()!!.charStream(), ErrorModel::class.java)
-            bus.post(ErrorEvent(ErrorUtil.handleCustomError(error)))
+            bus!!.post(ErrorEvent(ErrorUtil.handleCustomError(error)))
         } catch (e: Exception) {
-            bus.post(FailureEvent())
+            bus!!.post(FailureEvent())
         }
     }
 
+
+
     open fun failureAction(throwable: Throwable?) {
-        bus.post(FailureEvent())
+        bus!!.post(FailureEvent())
     }
 }
 
 class ErrorEvent(val error: String)
 class FailureEvent
+class ErrorUtil {
+    companion object {
+        fun handleCustomError(error: ErrorModel) : String {
+            return "asd"//todo esta clase no existia remover despues
+        }
+    }
+}
+
+class ErrorModel

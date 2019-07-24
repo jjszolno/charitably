@@ -3,5 +3,7 @@
 
     <dimen name="loader_padding">30dp</dimen>
     <dimen name="loader_radius">10dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+    <dimen name="btn_call">48dp</dimen>
 
 </resources>
