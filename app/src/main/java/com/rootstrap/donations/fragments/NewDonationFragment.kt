@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import com.rootstrap.donations.R
 import com.rootstrap.donations.activities.BaseActivity
 import com.rootstrap.donations.controllers.DonationsController
@@ -24,7 +25,11 @@ class NewDonationFragment : BaseFragment() {
     private fun sendDonation() {
         if (title_edit_text.text?.isNotEmpty()!! && description_edit_text.text?.isNotEmpty()!!) {
             (activity as BaseActivity).showLoader()
-            val donation = Donation(title = title_edit_text.text!!.toString(), description = description_edit_text.text!!.toString())
+            val selected = (type_radio.getChildAt(type_radio.checkedRadioButtonId)) as RadioButton
+            val donation = Donation(
+                    title = title_edit_text.text!!.toString(),
+                    description = description_edit_text.text!!.toString(),
+                    type = selected.text.toString())
             DonationsController().sendDonation(donation)
         }
     }
