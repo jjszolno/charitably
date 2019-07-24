@@ -1,7 +1,8 @@
-package com.rootstrap.donations
+package com.rootstrap.donations.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rootstrap.donations.R
 
 class MainActivity : AppCompatActivity() {
 

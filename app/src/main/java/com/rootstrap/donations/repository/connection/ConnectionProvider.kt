@@ -10,13 +10,15 @@ class ConnectionProvider {
 
     private fun build(context: Context): Retrofit {
         val client = OkHttpClient.Builder()
-            .build()
+                .addInterceptor(HeadersInterceptor())
+                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build()
 
         return Retrofit.Builder()
-            .baseUrl(API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
+                .baseUrl(API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
     }
 
     fun <T> create(context: Context, klass: Class<T>): T {
