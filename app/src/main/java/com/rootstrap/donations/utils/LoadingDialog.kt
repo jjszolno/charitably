@@ -1,4 +1,4 @@
-package com.rootstrap.ava.util
+package com.rootstrap.donations.utils
 
 import android.app.Dialog
 import android.content.Context
@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import com.rootstrap.donations.R
-
 
 class LoadingDialog(context: Context, cancelListener: DialogInterface.OnCancelListener?) : Dialog(context) {
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/form_margin"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/titleAppearance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_donation_title" />
+
+    <com.rootstrap.donations.utils.CustomTextInputLayout
+        android:id="@+id/title_text_input"
+        style="@style/TextInputLayout"
+        android:layout_marginTop="@dimen/form_item_margin_vertical"
+        android:hint="@string/new_donation_title_hint"
+        app:errorEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/title_edit_text"
+            style="@style/EditText"
+            android:imeOptions="actionNext"
+            android:inputType="textCapWords" />
+    </com.rootstrap.donations.utils.CustomTextInputLayout>
+
+    <com.rootstrap.donations.utils.CustomTextInputLayout
+        android:id="@+id/description_text_input"
+        style="@style/TextInputLayout"
+        android:layout_marginTop="@dimen/form_item_margin_vertical"
+        android:hint="@string/new_donation_description_hint"
+        app:errorEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/description_edit_text"
+            style="@style/EditText"
+            android:imeOptions="actionNext"
+            android:inputType="textCapWords" />
+    </com.rootstrap.donations.utils.CustomTextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/type_radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/food_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/new_donation_type_food" />
+
+        <RadioButton
+            android:id="@+id/clothing_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_donation_type_clothing" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_submit"
+        style="@style/navigationButton"
+        android:layout_marginTop="@dimen/navigation_button_margin_top"
+        android:enabled="false"
+        android:onClick="submitPressed"
+        android:text="@string/create_donation_button" />
+
+</LinearLayout>

@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="loader_padding">30dp</dimen>
-    <dimen name="loader_radius">10dp</dimen>
+    <dimen name="loader_padding">32dp</dimen>
+    <dimen name="loader_radius">8dp</dimen>
+    <dimen name="form_margin">16dp</dimen>
+    <dimen name="form_item_margin_vertical">8dp</dimen>
+
+    <dimen name="navigation_button_height">64dp</dimen>
+    <dimen name="navigation_button_margin_top">32dp</dimen>
+    <dimen name="navigation_button_corner_radius">4dp</dimen>
+
     <dimen name="padding_normal">8dp</dimen>
     <dimen name="btn_call">48dp</dimen>
+
+    <dimen name="text_size_XXXS">10sp</dimen>
+    <dimen name="text_size_XXS">11sp</dimen>
+    <dimen name="text_size_XS">13sp</dimen>
+    <dimen name="text_size_S">14sp</dimen>
+    <dimen name="text_size_M">15sp</dimen>
+    <dimen name="text_size_ML">16sp</dimen>
+    <dimen name="text_size_L">18sp</dimen>
+    <dimen name="text_size_LL">20sp</dimen>
+    <dimen name="text_size_LLL">24sp</dimen>
+    <dimen name="text_size_LXL">25sp</dimen>
+    <dimen name="text_size_XL">28sp</dimen>
+    <dimen name="text_size_XXL">30sp</dimen>
 
 </resources>

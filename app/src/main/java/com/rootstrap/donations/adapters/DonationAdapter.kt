@@ -1,9 +1,9 @@
 package com.rootstrap.donations.adapters
 
+import android.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rootstrap.donations.R
 import com.rootstrap.donations.databinding.ModelDonationBinding

@@ -1,17 +1,16 @@
 package com.rootstrap.donations.controllers
 
-import com.rootstrap.ava.util.ActionCallback
 import com.rootstrap.donations.bus
-import com.rootstrap.donations.databinding.FragmentDonationsBinding
 import com.rootstrap.donations.models.Donation
 import com.rootstrap.donations.repository.connection.ConnectionProvider
-import com.rootstrap.donations.repository.service.ApiService
+import com.rootstrap.donations.repository.services.ApiService
+import com.rootstrap.donations.utils.ActionCallback
 import retrofit2.Response
 
-class DonationsController(var repository: ConnectionProvider = ConnectionProvider()) {
+class DonationsController {
 
     open fun getDonations() {
-        val apiService = repository.create(ApiService::class.java)
+        val apiService = ConnectionProvider.create(ApiService::class.java)
         val callBack = DonationsCallBack()
         apiService.getDonations().enqueue(callBack)
     }
@@ -21,6 +20,20 @@ class DonationsController(var repository: ConnectionProvider = ConnectionProvide
             bus.post(AddDonationsEvent(response.body()))
         }
     }
-}
 
-open class AddDonationsEvent(var donations: ArrayList<Donation>? = ArrayList())
+    fun sendDonation(donation: Donation) {
+        val service = ConnectionProvider.create(ApiService::class.java)
+        val sendDonation = service.sendDonation(donation)
+        sendDonation.enqueue(DonationCallback())
+    }
+
+    private inner class DonationCallback : ActionCallback<Donation>() {
+        override fun responseAction(response: Response<Donation>) {
+            super.responseAction(response)
+            bus.post(DonationCallbackEvent(response.body()))
+        }
+    }
+
+    class DonationCallbackEvent(val donation: Donation?)
+    class AddDonationsEvent(var donations: ArrayList<Donation>? = ArrayList())
+}

@@ -1,4 +1,4 @@
-package com.rootstrap.ava.network.services
+package com.rootstrap.donations.repository.services
 
 import java.io.IOException
 import okhttp3.Interceptor

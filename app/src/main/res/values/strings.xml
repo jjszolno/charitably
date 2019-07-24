@@ -4,4 +4,14 @@
     <string name="generic_error">There was an unexpected error</string>
     <string name="view_contact_info">Contact Info</string>
 
+    <string name="new_donation_title">Create your Donation</string>
+    <string name="new_donation_title_hint">Title</string>
+    <string name="new_donation_description_hint">Description</string>
+    <string name="new_donation_type">Donation Type</string>
+    <string name="new_donation_type_food">Food</string>
+    <string name="new_donation_type_clothing">Clothing</string>
+    <string name="create_donation_button">Create Donation</string>
+
+    <string name="donation_sent">Donation sent successfully!</string>
+
 </resources>

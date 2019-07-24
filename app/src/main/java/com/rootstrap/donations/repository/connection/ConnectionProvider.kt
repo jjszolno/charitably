@@ -1,13 +1,13 @@
 package com.rootstrap.donations.repository.connection
 
-import com.rootstrap.ava.network.services.HeadersInterceptor
+import com.rootstrap.donations.repository.services.HeadersInterceptor
 import com.rootstrap.donations.utils.API_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
-class ConnectionProvider {
+object ConnectionProvider {
 
     private fun build(): Retrofit {
         val client = OkHttpClient.Builder()
@@ -17,7 +17,7 @@ class ConnectionProvider {
 
         return Retrofit.Builder()
                 .baseUrl(API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create())
                 .client(client)
                 .build()
     }
@@ -25,5 +25,4 @@ class ConnectionProvider {
     fun <T> create(klass: Class<T>): T {
         return build().create(klass)
     }
-
 }

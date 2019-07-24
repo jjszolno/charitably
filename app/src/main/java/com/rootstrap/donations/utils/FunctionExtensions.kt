@@ -1,4 +1,4 @@
-package com.rootstrap.ava.util
+package com.rootstrap.donations.utils
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

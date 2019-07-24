@@ -1,17 +1,16 @@
 package com.rootstrap.donations.fragments
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rootstrap.donations.R
 import com.rootstrap.donations.activities.BaseActivity
 import com.rootstrap.donations.adapters.DonationAdapter
 import com.rootstrap.donations.bus
-import com.rootstrap.donations.controllers.AddDonationsEvent
 import com.rootstrap.donations.controllers.DonationsController
 import com.rootstrap.donations.databinding.FragmentDonationsBinding
 import com.squareup.otto.Subscribe
@@ -43,7 +42,7 @@ class FragmentDonations(
     }
 
     @Subscribe
-    fun addDonations(event: AddDonationsEvent) {
+    fun addDonations(event: DonationsController.AddDonationsEvent) {
         (fragmentDonationBinding!!.donationList.adapter as DonationAdapter).addItems(event.donations)
         (activity as BaseActivity).dismissLoader()
     }

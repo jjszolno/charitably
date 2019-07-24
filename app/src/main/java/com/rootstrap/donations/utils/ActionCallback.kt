@@ -1,7 +1,8 @@
-package com.rootstrap.ava.util
+package com.rootstrap.donations.utils
 
 import com.google.gson.Gson
-import com.rootstrap.donations.App.Companion.bus
+import com.rootstrap.donations.bus
+import com.rootstrap.donations.models.ErrorModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +33,6 @@ abstract class ActionCallback<T> : Callback<T> {
     }
 
 
-
     open fun failureAction(throwable: Throwable?) {
         bus!!.post(FailureEvent())
     }
@@ -40,12 +40,3 @@ abstract class ActionCallback<T> : Callback<T> {
 
 class ErrorEvent(val error: String)
 class FailureEvent
-class ErrorUtil {
-    companion object {
-        fun handleCustomError(error: ErrorModel) : String {
-            return "asd"//todo esta clase no existia remover despues
-        }
-    }
-}
-
-class ErrorModel

@@ -1,9 +1,9 @@
 package com.rootstrap.donations.activities
 
 import android.os.Bundle
-import com.rootstrap.ava.util.addFragment
 import com.rootstrap.donations.R
 import com.rootstrap.donations.fragments.FragmentDonations
+import com.rootstrap.donations.utils.addFragment
 
 class MainActivity : BaseActivity() {
 

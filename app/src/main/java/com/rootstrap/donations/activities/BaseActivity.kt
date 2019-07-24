@@ -4,9 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.rootstrap.ava.util.LoadingDialog
 import com.rootstrap.donations.R
 import com.rootstrap.donations.bus
+import com.rootstrap.donations.utils.LoadingDialog
 
 abstract class BaseActivity : AppCompatActivity() {
 
