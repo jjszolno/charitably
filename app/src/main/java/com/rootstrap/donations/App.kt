@@ -1,6 +1,7 @@
 package com.rootstrap.donations
 
 import android.app.Application
+import android.content.Context
 import com.squareup.otto.Bus
 
 val bus: Bus by lazy {

@@ -1,26 +1,47 @@
 package com.rootstrap.donations.adapters
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.rootstrap.donations.R
+import com.rootstrap.donations.databinding.ModelDonationBinding
+import com.rootstrap.donations.models.Donation
 
-class DonationAdapter : RecyclerView.Adapter<DonationAdapter.DonationViewHolder>() {
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): DonationViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerView.Adapter<DonationAdapter.DonationViewHolder>() {
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): DonationViewHolder {
+        return DonationViewHolder(
+            LayoutInflater.from(viewGroup.context).inflate(R.layout.model_donation, viewGroup, false)
+        )
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return items.size
     }
 
-    override fun onBindViewHolder(p0: DonationViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onBindViewHolder(viewHolder: DonationViewHolder, position: Int) {
+        viewHolder.setupView(items[position])
     }
 
-    inner class DonationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun addItems(donations: ArrayList<Donation>? = ArrayList()) {
+        items.addAll(donations!!)
+        notifyItemRangeInserted(0, items.size)
+    }
 
-        fun setupView() {
+    inner class DonationViewHolder(view: View, var modelDonationBinding: ModelDonationBinding? = null) : RecyclerView.ViewHolder(view) {
 
+        init {
+            modelDonationBinding = DataBindingUtil.bind<ModelDonationBinding>(view)!!
+        }
+
+        fun setupView(donation: Donation) {
+            modelDonationBinding!!.donation = donation
+            modelDonationBinding!!.showContact = false
+            modelDonationBinding!!.actionContactInfo.setOnClickListener {
+
+            }
         }
     }
 }

@@ -6,7 +6,8 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
-import com.rootstrap.ava.R
+import com.rootstrap.donations.R
+
 
 class LoadingDialog(context: Context, cancelListener: DialogInterface.OnCancelListener?) : Dialog(context) {
 
