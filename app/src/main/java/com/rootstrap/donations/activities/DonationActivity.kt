@@ -2,6 +2,7 @@ package com.rootstrap.donations.activities
 
 import android.os.Bundle
 import com.rootstrap.donations.R
+import com.rootstrap.donations.bus
 import com.rootstrap.donations.controllers.DonationsController
 import com.rootstrap.donations.fragments.NewDonationFragment
 import com.rootstrap.donations.utils.replace
@@ -20,6 +21,10 @@ class DonationActivity : BaseActivity() {
     fun onDonationSent(event: DonationsController.DonationCallbackEvent){
         dismissLoader()
         showError(getString(R.string.donation_sent))
+        bus.post(ReloadDonations())
         finish()
     }
+
+    class ReloadDonations
+
 }

@@ -58,4 +58,6 @@ abstract class BaseActivity : AppCompatActivity() {
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
         }
     }
+
+
 }

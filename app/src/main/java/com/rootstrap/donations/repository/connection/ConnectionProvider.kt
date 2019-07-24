@@ -5,6 +5,7 @@ import com.rootstrap.donations.utils.API_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ConnectionProvider {
@@ -17,7 +18,7 @@ object ConnectionProvider {
 
         return Retrofit.Builder()
                 .baseUrl(API_URL)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
     }

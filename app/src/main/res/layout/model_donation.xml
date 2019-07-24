@@ -5,13 +5,12 @@
 
     <data>
         <import type="android.view.View"/>
-        <variable name="showContact" type="Boolean"/>
         <variable name="donation" type="com.rootstrap.donations.models.Donation"/>
         <variable name="user" type="com.rootstrap.donations.models.User"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                       android:layout_height="match_parent"
+                                                       android:layout_height="wrap_content"
                                                        android:padding="@dimen/padding_normal">
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -27,35 +26,23 @@
                   app:layout_constraintTop_toBottomOf="@id/donation_title"/>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:id="@+id/donation_user_name"
-                  android:visibility="@{showContact? View.VISIBLE : View.GONE}"
                   android:text="@{user.name}"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintTop_toBottomOf="@id/donation_description"/>
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="@string/view_contact_info"
-                  android:padding="@dimen/padding_normal"
-                  android:clickable="true"
-                  android:focusable="true"
-                  android:id="@+id/action_contact_info"
-                  app:layout_constraintTop_toBottomOf="@id/donation_user_name" tools:ignore="MissingConstraints"/>
-
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:id="@+id/donation_user_contact"
-                  android:visibility="@{showContact? View.VISIBLE : View.GONE}"
                   android:text="@{user.phone}"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintEnd_toStartOf="@id/donation_user_contact_action"
                   app:layout_constraintTop_toBottomOf="@id/donation_user_name"/>
-
         <ImageView android:layout_width="@dimen/btn_call" android:layout_height="@dimen/btn_call"
                    android:id="@+id/donation_user_contact_action"
-                   android:src="@mipmap/ic_launcher"
-                   android:visibility="@{showContact? View.VISIBLE : View.GONE}"
+                   android:src="@drawable/ic_call_black_24dp"
+                   android:tint="@android:color/white"
+                   android:background="@color/colorPrimary"
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintTop_toBottomOf="@id/donation_user_name"/>
-
         <ImageView android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:id="@+id/donation_image"
