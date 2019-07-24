@@ -1,15 +1,15 @@
 package com.rootstrap.donations.controllers
 
-import com.rootstrap.ava.util.ActionCallback
 import com.rootstrap.donations.models.User
 import com.rootstrap.donations.repository.connection.ConnectionProvider
-import com.rootstrap.donations.repository.service.ApiService
+import com.rootstrap.donations.repository.services.ApiService
+import com.rootstrap.donations.utils.ActionCallback
 import retrofit2.Response
 
-class UserController(var repository: ConnectionProvider = ConnectionProvider()) {
+class UserController {
 
-    open fun getUser(id: Int) {
-        val apiService = repository.create(ApiService::class.java)
+    fun getUser(id: Int) {
+        val apiService = ConnectionProvider.create(ApiService::class.java)
         val userCallback = UserCallBack()
         apiService.getUser(id).enqueue(userCallback)
     }

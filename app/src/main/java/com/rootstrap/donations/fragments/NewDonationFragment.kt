@@ -24,7 +24,7 @@ class NewDonationFragment : BaseFragment() {
     private fun sendDonation() {
         if (title_edit_text.text?.isNotEmpty()!! && description_edit_text.text?.isNotEmpty()!!) {
             (activity as BaseActivity).showLoader()
-            val donation = Donation(title = title_edit_text.text!!.toString(), description = description_edit_text!!.toString())
+            val donation = Donation(title = title_edit_text.text!!.toString(), description = description_edit_text.text!!.toString())
             DonationsController().sendDonation(donation)
         }
     }

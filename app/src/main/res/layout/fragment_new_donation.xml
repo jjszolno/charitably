@@ -66,7 +66,6 @@
         android:id="@+id/button_submit"
         style="@style/navigationButton"
         android:layout_marginTop="@dimen/navigation_button_margin_top"
-        android:enabled="false"
         android:onClick="submitPressed"
         android:text="@string/create_donation_button" />
 

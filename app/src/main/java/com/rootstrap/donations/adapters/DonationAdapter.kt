@@ -1,6 +1,5 @@
 package com.rootstrap.donations.adapters
 
-import android.databinding.DataBindingUtil
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import com.rootstrap.donations.databinding.ModelDonationBinding
 import com.rootstrap.donations.models.Donation
 import androidx.core.content.ContextCompat.startActivity
 import android.net.Uri
+import androidx.databinding.DataBindingUtil
 
 
 class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerView.Adapter<DonationAdapter.DonationViewHolder>() {
@@ -30,6 +30,7 @@ class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerVi
     }
 
     fun addItems(donations: ArrayList<Donation>? = ArrayList()) {
+        items.clear()
         items.addAll(donations!!)
         notifyItemRangeInserted(0, items.size)
     }
@@ -45,7 +46,7 @@ class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerVi
             modelDonationBinding!!.user = donation.user
             modelDonationBinding!!.donationUserContactAction.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW)
-                val parseWhatsAppContact = modelDonationBinding!!.donationUserContact.context.getString(R.string.open_whatsapp, donation.user.phone.trim(), donation.title)
+                val parseWhatsAppContact = modelDonationBinding!!.donationUserContact.context.getString(R.string.open_whatsapp, donation.user!!.phone.trim(), donation.title)
                 intent.data = Uri.parse(parseWhatsAppContact)
                 startActivity(modelDonationBinding!!.donationUserContact.context, intent, null)
             }
