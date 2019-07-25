@@ -26,7 +26,8 @@ class UserController(val apiService: ApiService = ConnectionProvider.create(ApiS
     }
 
     inner class LogInCallBack : ActionCallback<ArrayList<User>>() {
-        override fun responseAction(response: Response<ArrayList<User>>) {123
+
+        override fun responseAction(response: Response<ArrayList<User>>) {
             if (response.body()!=null && response.body()!!.size > 0) {
                 bus.post(SuccesfulSignUp(response.body()!![0]))
             } else {
