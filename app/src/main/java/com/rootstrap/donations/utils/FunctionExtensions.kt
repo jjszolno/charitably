@@ -40,3 +40,6 @@ fun Bundle.getSerializable(arG_PARAM: String, defaultValue: Serializable): Seria
 }
 
 inline fun <reified T> Gson.fromJson(json: String) = this.fromJson<T>(json, object : TypeToken<T>() {}.type)
+
+fun Any.toGson(): String = Gson().toJson(this)
+inline fun <reified T> String.fromGson() : T = Gson().fromJson(this,T :: class.java)

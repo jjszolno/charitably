@@ -16,5 +16,8 @@
     <string name="create_donation_button">Create Donation</string>
 
     <string name="donation_sent">Donation sent successfully!</string>
+    <string name="default_error_login">Verifique sus datos</string>
+    <string name="default_error">Opps!! Ha ocurrido un error</string>
+    <string name="default_error_login_user_exist">this user exist</string>
 
 </resources>

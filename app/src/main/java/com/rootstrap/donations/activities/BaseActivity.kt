@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rootstrap.donations.R
 import com.rootstrap.donations.bus
+import com.rootstrap.donations.utils.FailureEvent
 import com.rootstrap.donations.utils.LoadingDialog
+import com.squareup.otto.Subscribe
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -58,6 +60,5 @@ abstract class BaseActivity : AppCompatActivity() {
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
         }
     }
-
 
 }
