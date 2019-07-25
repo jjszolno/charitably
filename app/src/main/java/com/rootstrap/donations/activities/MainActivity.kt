@@ -7,7 +7,9 @@ import com.rootstrap.donations.R
 import com.rootstrap.donations.bus
 import com.rootstrap.donations.databinding.ActivityMainBinding
 import com.rootstrap.donations.fragments.FragmentDonations
+import com.rootstrap.donations.utils.FailureEvent
 import com.rootstrap.donations.utils.addFragment
+import com.squareup.otto.Subscribe
 
 class MainActivity : BaseActivity() {
 

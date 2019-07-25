@@ -30,6 +30,7 @@ class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerVi
     }
 
     fun addItems(donations: ArrayList<Donation>? = ArrayList()) {
+        notifyItemRangeRemoved(0,items.size)
         items.clear()
         items.addAll(donations!!)
         notifyItemRangeInserted(0, items.size)

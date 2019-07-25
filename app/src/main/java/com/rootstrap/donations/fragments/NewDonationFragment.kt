@@ -9,6 +9,8 @@ import com.rootstrap.donations.R
 import com.rootstrap.donations.activities.BaseActivity
 import com.rootstrap.donations.controllers.DonationsController
 import com.rootstrap.donations.models.Donation
+import com.rootstrap.donations.utils.FailureEvent
+import com.squareup.otto.Subscribe
 import kotlinx.android.synthetic.main.fragment_new_donation.*
 
 class NewDonationFragment : BaseFragment() {
@@ -33,4 +35,11 @@ class NewDonationFragment : BaseFragment() {
             DonationsController().sendDonation(donation)
         }
     }
+
+    @Subscribe
+    fun error(event: FailureEvent) {
+        (activity as BaseActivity).dismissLoader()
+        (activity as BaseActivity).showError(getString(R.string.default_error))
+    }
+
 }

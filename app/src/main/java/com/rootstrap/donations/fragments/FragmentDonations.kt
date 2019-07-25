@@ -15,11 +15,12 @@ import com.rootstrap.donations.adapters.DonationAdapter
 import com.rootstrap.donations.bus
 import com.rootstrap.donations.controllers.DonationsController
 import com.rootstrap.donations.databinding.FragmentDonationsBinding
+import com.rootstrap.donations.utils.FailureEvent
 import com.squareup.otto.Subscribe
 
 class FragmentDonations(
     var fragmentDonationBinding: FragmentDonationsBinding? = null,
-    var donationsController: DonationsController? = DonationsController()) : Fragment() {
+    var donationsController: DonationsController? = DonationsController()) : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -41,6 +42,10 @@ class FragmentDonations(
     private fun setupView() {
         fragmentDonationBinding!!.donationList.layoutManager = LinearLayoutManager(context)
         fragmentDonationBinding!!.donationList.adapter = DonationAdapter()
+        fragmentDonationBinding!!.refreshDonations.setOnRefreshListener {
+            getDonations()
+            fragmentDonationBinding!!.refreshDonations.isRefreshing = false
+        }
     }
 
     @Subscribe
@@ -50,22 +55,11 @@ class FragmentDonations(
     }
 
     @Subscribe
-    fun reloadDonations(event: DonationActivity.ReloadDonations) {
-        getDonations()
-    }
+    fun reloadDonations(event: DonationActivity.ReloadDonations) { getDonations() }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    @Subscribe
+    fun error(event: FailureEvent) {
         (activity as BaseActivity).dismissLoader()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        bus.register(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        bus.unregister(this)
+        (activity as BaseActivity).showError(getString(R.string.default_error))
     }
 }

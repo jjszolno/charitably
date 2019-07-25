@@ -21,4 +21,13 @@ interface ApiService {
 
     @POST("donations")
     fun sendDonation(@Body donation: Donation): Call<Donation>
+
+    @POST("users")
+    fun signUp(@Body user: User): Call<User>
+
+    @GET("users")
+    fun logIn(@Query("phone") phone: String, @Query("password") password: String): Call<ArrayList<User>>
+
+    @GET("users")
+    fun logIn(@Query("phone") phone: String): Call<ArrayList<User>>
 }
