@@ -11,7 +11,8 @@
     <dimen name="navigation_button_corner_radius">4dp</dimen>
 
     <dimen name="padding_normal">8dp</dimen>
-    <dimen name="btn_call">48dp</dimen>
+    <dimen name="padding_big">16dp</dimen>
+    <dimen name="btn_call">64dp</dimen>
 
     <dimen name="text_size_XXXS">10sp</dimen>
     <dimen name="text_size_XXS">11sp</dimen>
@@ -25,5 +26,9 @@
     <dimen name="text_size_LXL">25sp</dimen>
     <dimen name="text_size_XL">28sp</dimen>
     <dimen name="text_size_XXL">30sp</dimen>
+    <dimen name="normal_margin">8dp</dimen>
+    <dimen name="tiny_margin">4dp</dimen>
+    <dimen name="elevation_normal">2dp</dimen>
+    <dimen name="donation_border_radius">2dp</dimen>
 
 </resources>

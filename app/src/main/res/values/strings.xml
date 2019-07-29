@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Donations</string>
+    <string name="app_name">Charitably</string>
 
     <string name="generic_error">There was an unexpected error</string>
     <string name="view_contact_info">Contact Info</string>

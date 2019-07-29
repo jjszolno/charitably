@@ -1,17 +1,17 @@
 package com.rootstrap.donations.adapters
 
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rootstrap.donations.R
+import com.rootstrap.donations.appContext
 import com.rootstrap.donations.databinding.ModelDonationBinding
 import com.rootstrap.donations.models.Donation
-import androidx.core.content.ContextCompat.startActivity
-import android.net.Uri
-import androidx.databinding.DataBindingUtil
-
 
 class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerView.Adapter<DonationAdapter.DonationViewHolder>() {
 
@@ -36,21 +36,22 @@ class DonationAdapter(var items: ArrayList<Donation> = ArrayList()) : RecyclerVi
         notifyItemRangeInserted(0, items.size)
     }
 
-    inner class DonationViewHolder(view: View, var modelDonationBinding: ModelDonationBinding? = null) : RecyclerView.ViewHolder(view) {
+    fun contactUser(phone: String, title: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val parseWhatsAppContact = appContext.getString(R.string.open_whatsapp, phone, title)
+        intent.data = Uri.parse(parseWhatsAppContact)
+        startActivity(appContext, intent, null)
+    }
+
+    open inner class DonationViewHolder(view: View, var modelDonationBinding: ModelDonationBinding? = null) : RecyclerView.ViewHolder(view) {
 
         init {
-            modelDonationBinding = DataBindingUtil.bind<ModelDonationBinding>(view)!!
+            modelDonationBinding = DataBindingUtil.bind(view)!!
+            modelDonationBinding!!.adapter = this@DonationAdapter
         }
 
         fun setupView(donation: Donation) {
             modelDonationBinding!!.donation = donation
-            modelDonationBinding!!.user = donation.user
-            modelDonationBinding!!.donationUserContactAction.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW)
-                val parseWhatsAppContact = modelDonationBinding!!.donationUserContact.context.getString(R.string.open_whatsapp, donation.user!!.phone.trim(), donation.title)
-                intent.data = Uri.parse(parseWhatsAppContact)
-                startActivity(modelDonationBinding!!.donationUserContact.context, intent, null)
-            }
         }
     }
 }
